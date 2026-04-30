@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ClawSweeper — Conservative Maintenance Bot for OpenClaw</title>
+<meta name="description" content="ClawSweeper scans every open issue and pull request weekly, writes one durable review comment per item, and proposes a close only when the evidence is strong.">
+<meta name="theme-color" content="#0a0e12">
+<meta property="og:title" content="ClawSweeper">
+<meta property="og:description" content="The conservative maintenance bot for OpenClaw repositories.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://clawsweeper.bot">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ClawSweeper">
+<meta name="twitter:description" content="The conservative maintenance bot for OpenClaw repositories.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a0e12'/%3E%3Ctext x='50%25' y='50%25' dy='.36em' text-anchor='middle' font-family='Georgia,serif' font-size='22' font-style='italic' fill='%23d4a574'%3EC%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,30..100;1,9..144,300..700,30..100&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<svg class="grain" aria-hidden="true">
+  <filter id="grain">
+    <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"/>
+    <feColorMatrix values="0 0 0 0 0.85 0 0 0 0 0.85 0 0 0 0 0.85 0 0 0 0.04 0"/>
+  </filter>
+  <rect width="100%" height="100%" filter="url(#grain)"/>
+</svg>
+
+<main>
+
+  <header class="hero">
+    <div class="plate" aria-hidden="true">
+      <span>Sweeper Log</span>
+      <span class="plate-sep">·</span>
+      <span>MMXXV</span>
+      <span class="plate-sep">·</span>
+      <span>OpenClaw</span>
+    </div>
+
+    <h1 class="title">Claw<em>Sweeper</em>.</h1>
+
+    <p class="lede">
+      The conservative maintenance bot for
+      OpenClaw repositories.
+    </p>
+
+    <ul class="sub" role="list">
+      <li>Scans every open issue &amp; pull request weekly.</li>
+      <li>Writes one durable review comment per item.</li>
+      <li>Proposes a close only when the evidence is strong.</li>
+    </ul>
+
+    <div class="hero-meta" aria-hidden="true">
+      <span class="meta-key">Last swept</span>
+      <span class="meta-val">2026 · 04 · 29 · 04:00 UTC</span>
+    </div>
+  </header>
+
+  <hr class="rule rule-major">
+
+  <section class="lanes" aria-label="Operating lanes">
+    <article class="lane">
+      <div class="lane-label">
+        <span class="lane-num">Lane 01</span>
+        <span class="lane-name"><em>Issue</em> &amp; <em>PR</em> Sweeper</span>
+      </div>
+      <p class="lane-body">
+        A weekly cadence over every open issue and pull request.
+        One markdown report per item; one durable Codex review comment,
+        edited in place — never spammed. A close is proposed only when
+        the evidence is strong.
+      </p>
+      <pre class="path">records/&lt;repo-slug&gt;/items/&lt;number&gt;.md</pre>
+    </article>
+
+    <div class="lane-divider" aria-hidden="true"></div>
+
+    <article class="lane">
+      <div class="lane-label">
+        <span class="lane-num">Lane 02</span>
+        <span class="lane-name"><em>Commit</em> Sweeper</span>
+      </div>
+      <p class="lane-body">
+        Runs against code-bearing commits on <code>main</code>. Writes
+        one canonical report per SHA; an optional GitHub Check Run
+        attaches the verdict to the commit itself. Non-code commits
+        are skipped cheaply.
+      </p>
+      <pre class="path">records/&lt;repo-slug&gt;/commits/&lt;sha&gt;.md</pre>
+    </article>
+  </section>
+
+  <hr class="rule">
+
+  <section class="guardrails" aria-label="Guardrails">
+    <h2 class="section-label">§ &nbsp;Guardrails</h2>
+    <p class="section-intro">
+      A close is proposed only when the item is, with evidence, one of these.
+    </p>
+
+    <ol class="rails" role="list">
+      <li>
+        <span class="rail-num">01</span>
+        <span class="rail-text">implemented on current <code>main</code></span>
+      </li>
+      <li>
+        <span class="rail-num">02</span>
+        <span class="rail-text">not reproducible on current <code>main</code></span>
+      </li>
+      <li>
+        <span class="rail-num">03</span>
+        <span class="rail-text">better suited for ClawHub skill or plugin work than core</span>
+      </li>
+      <li>
+        <span class="rail-num">04</span>
+        <span class="rail-text">duplicate or superseded by a canonical issue / PR</span>
+      </li>
+      <li>
+        <span class="rail-num">05</span>
+        <span class="rail-text">concrete but not actionable in this source repo</span>
+      </li>
+    </ol>
+
+    <p class="footnote">
+      Snapshot drift, maintainer authorship, paired issue/PR state,
+      and protected labels each block apply on their own.
+    </p>
+  </section>
+
+  <hr class="rule">
+
+  <section class="apparatus" aria-label="Built around">
+    <h2 class="section-label">§ &nbsp;Built around</h2>
+    <ul class="apparatus-grid" role="list">
+      <li>Per-repository profiles</li>
+      <li>Durable marker-backed comments</li>
+      <li>Snapshot drift checks</li>
+      <li>Archive &amp; reopen handling</li>
+      <li>README dashboard</li>
+      <li>Audit &amp; reconcile</li>
+      <li>Workflow status markers</li>
+      <li>ClawSweeper repair dispatch</li>
+    </ul>
+  </section>
+
+  <hr class="rule">
+
+  <section class="watch" aria-label="Currently under watch">
+    <h2 class="section-label">§ &nbsp;Currently under watch</h2>
+    <ul class="watch-list" role="list">
+      <li>
+        <span class="watch-repo">openclaw <span class="slash">/</span> openclaw</span>
+        <span class="watch-note">core</span>
+      </li>
+      <li>
+        <span class="watch-repo">openclaw <span class="slash">/</span> clawhub</span>
+        <span class="watch-note">skills &amp; plugins</span>
+      </li>
+      <li>
+        <span class="watch-repo">openclaw <span class="slash">/</span> clawsweeper</span>
+        <span class="watch-note">self-review</span>
+      </li>
+    </ul>
+  </section>
+
+  <footer class="foot">
+    <hr class="rule rule-major">
+    <div class="foot-row">
+      <p class="foot-mark">
+        <em>ClawSweeper</em> — a quiet member of the OpenClaw family.
+      </p>
+      <nav class="foot-links" aria-label="External links">
+        <a href="https://github.com/openclaw/clawsweeper">GitHub</a>
+        <a href="https://openclaw.ai">openclaw.ai</a>
+        <a href="https://clawhub.ai">clawhub.ai</a>
+      </nav>
+    </div>
+  </footer>
+
+</main>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "clawsweeper-bot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Landing page for ClawSweeper — the conservative maintenance bot for OpenClaw repositories.",
+  "homepage": "https://clawsweeper.bot",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/openclaw/clawsweeper"
+  },
+  "license": "MIT",
+  "scripts": {
+    "dev": "python3 -m http.server 4321",
+    "preview": "python3 -m http.server 4321"
+  }
+}
