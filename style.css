@@ -114,6 +114,25 @@ main {
   padding: clamp(1.5rem, 3vw, 2.5rem) 0 clamp(2.5rem, 5vw, 4rem);
 }
 
+.crab-mark {
+  display: block;
+  width: auto;
+  height: clamp(34px, 4vw, 44px);
+  color: var(--amber);
+  margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+  opacity: 0.92;
+  overflow: visible;
+}
+
+.crab-mark > g {
+  transform-origin: 48px 38px;
+  transition: transform 700ms cubic-bezier(.2,.7,.2,1);
+}
+
+.hero:hover .crab-mark > g {
+  transform: scaleX(1.04) translateY(-1px);
+}
+
 .plate {
   display: inline-flex;
   align-items: center;
@@ -533,6 +552,7 @@ main {
 /* ===== page-load motion ===================================== */
 
 @media (prefers-reduced-motion: no-preference) {
+  .crab-mark,
   .plate,
   .title,
   .lede,
@@ -543,11 +563,12 @@ main {
     animation: rise 1100ms cubic-bezier(.2,.7,.2,1) forwards;
   }
 
-  .plate     { animation-delay:   0ms; }
-  .title     { animation-delay: 110ms; }
-  .lede      { animation-delay: 280ms; }
-  .sub       { animation-delay: 440ms; }
-  .hero-meta { animation-delay: 600ms; }
+  .crab-mark { animation-delay:   0ms; }
+  .plate     { animation-delay:  90ms; }
+  .title     { animation-delay: 220ms; }
+  .lede      { animation-delay: 380ms; }
+  .sub       { animation-delay: 540ms; }
+  .hero-meta { animation-delay: 700ms; }
 
   @keyframes rise {
     to {
