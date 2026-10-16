@@ -3,6 +3,7 @@
 ## Unreleased
 
 - Ignore maintainer opt-in reminders in the comment prefilter so quoted commands do not queue another dispatch. Thanks @SebTardif (#4).
+- Keep comment commands dispatching when the optional target acknowledgement token cannot be minted. Thanks @SebTardif (#5).
 
 ## 1.0.1 — 2026-10-16
 

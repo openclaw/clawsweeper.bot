@@ -64,6 +64,7 @@ jobs:
             steps.comment_filter.outputs.is_command == 'true' &&
             env.HAS_CLAWSWEEPER_APP_PRIVATE_KEY == 'true'
           }}
+        continue-on-error: true
         uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
         with:
           client-id: ${{ env.CLAWSWEEPER_APP_CLIENT_ID }}

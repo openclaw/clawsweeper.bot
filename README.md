@@ -46,6 +46,9 @@ Ignored bot label events also use a separate group. Marked maintainer opt-in
 reminders are ignored even when they quote a command; ordinary comment commands
 continue to use the shared router's existing command set.
 
+Comment dispatch uses its own credential and continues if the optional token for
+reactions and queued acknowledgements cannot be created.
+
 ## Deploy
 
 This repo is wired to a Vercel project under the `amantus` team. Production
