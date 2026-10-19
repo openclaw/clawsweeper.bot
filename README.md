@@ -31,7 +31,7 @@ Then open <http://localhost:4321>.
 
 ## Checks
 
-Run the dispatch concurrency regression tests with Node.js 22 or later:
+Run the dispatch regression tests with Node.js 22 or later, Bash, and jq:
 
 ```bash
 pnpm test
@@ -43,11 +43,17 @@ Comment commands have separate concurrency groups per comment, so issue or pull
 request edits cannot cancel them. Edits to the same comment still supersede its
 earlier dispatch; metadata edits continue to supersede earlier metadata runs.
 Ignored bot label events also use a separate group. Marked maintainer opt-in
-reminders are ignored even when they quote a command; ordinary comment commands
-continue to use the shared router's existing command set.
+reminders are ignored even when they quote a command. The prefilter admits review,
+status, stop, explanation, approval, fix, build, and implementation commands for
+the shared router to authorize and process.
 
-Comment dispatch uses its own credential and continues if the optional token for
-reactions and queued acknowledgements cannot be created.
+Dispatch uses GitHub Actions OIDC with `id-token: write` to authenticate to the
+ClawSweeper intake endpoint; no stored App key or acknowledgement token is needed.
+The App webhook remains an independent delivery route. Successful intake and
+deliberate non-transient HTTP 4xx refusals complete the job. Missing OIDC tokens,
+network failures, HTTP 408/429, and server failures fail the job so it can be rerun.
+Tests execute the workflow scripts against a synthetic HTTP stub without calling
+GitHub or the live intake service.
 
 ## Deploy
 

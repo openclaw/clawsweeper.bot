@@ -43,11 +43,9 @@ const accepted = [
   '/auto merge',
   '/auto-merge',
   '/autoclose',
-];
-
-const rejected = [
   '/re-review',
   '/rerun review',
+  '/rerun-review',
   '/stop',
   '/explain',
   '/fix',
@@ -55,6 +53,13 @@ const rejected = [
   '/approve',
   '/build',
   '/implement',
+  '/create pr',
+  '/create-pr',
+  '/fix issue',
+  '/fix-issue',
+  '/autofix',
+  '/auto fix',
+  '/auto-fix',
 ];
 
 for (const command of accepted) {
@@ -63,7 +68,7 @@ for (const command of accepted) {
   });
 }
 
-for (const command of rejected) {
+for (const command of ['/preview', '/stopwatch', '/reviewer', '/auto', '/create', '/rerun']) {
   test(`${command} is not queued`, () => {
     assert.equal(classify(`please ${command}\n`), 'is_command=false');
   });
