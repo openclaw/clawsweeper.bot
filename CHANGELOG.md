@@ -2,8 +2,8 @@
 
 ## Unreleased
 
+- Restore CI after the keyless OIDC dispatch migration with updated command coverage, synthetic intake failure tests, and current dispatch documentation.
 - Update CI checkout to v7.0.1 for dependency security fixes and safer fork handling.
-
 - Ignore maintainer opt-in reminders in the comment prefilter so quoted commands do not queue another dispatch. Thanks @SebTardif (#4).
 - Keep comment commands dispatching when the optional target acknowledgement token cannot be minted. Thanks @SebTardif (#5).
 
