@@ -22,10 +22,11 @@ the existing deployment integration remains separate.
 ## Rehearse and publish
 
 The only publication path is `.github/workflows/release.yml`, using the shared
-`openclaw/release-workflows` source-release pipeline at `v1`. It validates the
-protected source commit and exact notes, runs tests without write credentials,
-and verifies the same source archives on two independent runners before
-publication. There is no local `gh release create` path.
+`openclaw/release-workflows` source-release pipeline at the commit pinned in
+`release.yml`. It validates the protected source commit and exact notes, runs
+tests without write credentials, and verifies the same source archives on two
+independent runners before publication. There is no local `gh release create`
+path.
 
 1. Dispatch `release.yml` on `main` with `version=X.Y.Z` and `dry_run=true`.
    Confirm that the run uses the release-prep merge commit and succeeds.
